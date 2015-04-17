@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.qiudao.cordova.qq" version="0.9"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>QQ</name>
+    <description>QQ Login Cordova plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,plugin,qq</keywords>
+    <author>baomingba</author>
+
+    <js-module src="www/qq.js" name="QQ">
+        <clobbers target="QQ" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="QQ">
+                <param name="ios-package" value="CDVQQ" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string>tencent</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>TENCENT_YOUR_QQ_APP_ID</string>
+                    </array>
+                </dict>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string>mqqapi</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>QQ_YOUR_QQ_APP_ID</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+
+        <header-file src="src/ios/CDVQQ.h" />
+        <source-file src="src/ios/CDVQQ.m" />
+        <header-file src="src/ios/AppDelegate+qq.h" />
+        <source-file src="src/ios/AppDelegate+qq.m" />
+
+        <framework src="src/ios/libs/TencentOpenAPI.framework" custom="true"/>
+
+        <framework src="libz.dylib" weak="false" />
+        <framework src="libsqlite3.0.dylib" weak="false" />
+        <framework src="SystemConfiguration.framework" weak="false" />
+        <framework src="Security.framework" weak="false" />
+        <framework src="libstdc++.6.dylib" weak="false" />
+        <framework src="libiconv.dylib" weak="false" />
+        <!--<framework src="CoreGraphics.Framework" weak="false" />
+        <framework src="libsqlite3.dylib" weak="false" />
+        <framework src="CoreTelephony.framework" weak="false" />-->
+    </platform>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="QQ">
+                <param name="android-package" value="com.qiudao.cordova.qq.QQ" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/QQ.java" target-dir="src/com/qiudao/cordova/qq" />
+
+        <source-file src="src/android/libs/open_sdk_r4889_lite.jar" target-dir="libs" />
+    </platform>
+</plugin>
