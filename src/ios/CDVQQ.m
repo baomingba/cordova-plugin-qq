@@ -113,7 +113,7 @@
 #pragma mark "private"
 
 - (void)handleFail:(NSString*)callbackID withLoginStatus:(int)loginStatus {
-    NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:loginStatus, @"code", nil];
+    NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:loginStatus], @"code", nil];
     
     CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:info];
     [self.commandDelegate sendPluginResult:commandResult callbackId:callbackID];

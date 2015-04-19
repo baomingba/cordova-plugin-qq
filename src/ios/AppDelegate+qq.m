@@ -19,16 +19,16 @@
     Method original, swizzled;
     
     original = class_getInstanceMethod(self, @selector(init));
-    swizzled = class_getInstanceMethod(self, @selector(swizzled_init));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_qq_init));
     method_exchangeImplementations(original, swizzled);
 }
 
-- (AppDelegate *)swizzled_init {
+- (AppDelegate *)swizzled_qq_init {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initQQApp:) name:@"UIApplicationDidFinishLaunchingNotification" object:nil];
     
     // This actually calls the original init method over in AppDelegate. Equivilent to calling super
     // on an overrided method, this is not recursive, although it appears that way. neat huh?
-    return [self swizzled_init];
+    return [self swizzled_qq_init];
 }
 
 // This code will be called immediately after application:didFinishLaunchingWithOptions:. We need

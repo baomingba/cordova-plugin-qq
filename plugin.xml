@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.qiudao.cordova.qq" version="0.9"
-        xmlns="http://apache.org/cordova/ns/plugins/1.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.qiudao.cordova.qq" version="0.9">
     <name>QQ</name>
-    <description>QQ Login Cordova plugin</description>
+    <description>Cordova plugin for QQ SDK</description>
     <license>Apache 2.0</license>
     <keywords>cordova,plugin,qq</keywords>
-    <author>baomingba</author>
+    <author>Baomingba</author>
 
     <js-module src="www/qq.js" name="QQ">
         <clobbers target="QQ" />
